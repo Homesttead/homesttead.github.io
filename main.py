@@ -2,15 +2,10 @@ import discord
 import asyncio
 import json
 import random
-import logging
 import os
 
-from flask import Flask
-import threading
-
-app = Flask(__name__)
-
-logging.basicConfig(level=logging.INFO)
+from keep_alive import keep_alive
+keep_alive()
 
 intents = discord.Intents.default()
 intents.message_content = True
@@ -70,25 +65,8 @@ class CardassianDowekBot(discord.Client):
     async def show_current_value(self, channel):
         await channel.send(f"**Current Value:** 1.00$ = {self.dowek_value:.2f}₡")
 
-@app.route("/")
-def home():
-  return "Bot is online!"
+token = os.environ.get('TOKEN')
 
-def run_bot():
-  # Your bot token
-  token = os.environ.get('TOKEN')
-
-  # Your bot instance
-  bot = CardassianDowekBot(intents=intents)
-  bot.run(token)
-
-if __name__ == "__main__":
-  # Start the Flask web server in a separate thread
-  threading.Thread(target=app.run, kwargs={
-      "host": "0.0.0.0",
-      "port": 5000
-  }).start()
-
-  # Start the bot in the main thread
-  run_bot()
-
+# Your bot instance
+bot = CardassianDowekBot(intents=intents)
+bot.run(token)
