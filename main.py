@@ -32,6 +32,8 @@ class CardassianDowekBot(discord.Client):
         if message.content.lower().startswith(f"{self.prefix}stats"):
             await self.show_current_value(message.channel)
 
+        await self.process_commands(message)
+
     async def update_coin_value(self):
         while True:
             await asyncio.sleep(self.update_interval)
