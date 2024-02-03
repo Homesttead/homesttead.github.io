@@ -19,8 +19,8 @@ class CardassianDowekBot(discord.Client):
         self.coin_data_file = "coin_data.json"
         self.update_interval = 600  # Update every 1 hour (adjust as needed)
         self.dowek_value = 1.0  # Initial Dowek value
-        self.up_chance = 65  # Percentage chance for Dowek value to go up
-        self.down_chance = 100 - self.up_chance  # Percentage chance for Dowek value to go down
+        self.up_chance = 65  # Percentage chance for Dowek value to inflate
+        self.down_chance = 100 - self.up_chance  # Percentage chance for Dowek value to deflate
 
     async def on_ready(self):
         print(f"Logged in as {self.user}")
