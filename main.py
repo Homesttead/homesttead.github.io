@@ -16,7 +16,7 @@ class CardassianDowekBot(discord.Client):
     def __init__(self, intents):
         super().__init__(intents=intents)
         self.prefix = "!"
-        self.update_interval = 600  # Update every 1 hour (adjust as needed)
+        self.update_interval = 60  # Update every 1 hour (adjust as needed)
         self.up_chance = 65  # Percentage chance for Dowek value to inflate
         self.down_chance = 100 - self.up_chance  # Percentage chance for Dowek value to deflate
 
@@ -39,10 +39,10 @@ class CardassianDowekBot(discord.Client):
             # Randomly determine whether Dowek value goes up or down
             if random.randint(1, 100) <= self.up_chance:
                 # Dowek value goes up
-                self.dowek_value *= 1 + (random.uniform(0, 10) / 100)
+                self.dowek_value *= 1 + (random.uniform(0, 4) / 100)
             else:
                 # Dowek value goes down
-                self.dowek_value *= 1 - (random.uniform(0, 10) / 100)
+                self.dowek_value *= 1 - (random.uniform(0, 4) / 100)
 
             await self.save_dowek_value()
             print(f"Updated coin values - Dowek: {self.dowek_value:.2f}₡")
