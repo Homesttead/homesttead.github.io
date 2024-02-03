@@ -3,6 +3,7 @@ import asyncio
 import json
 import random
 import logging
+import os
 
 from flask import Flask
 import threading
@@ -75,7 +76,7 @@ def home():
 
 def run_bot():
   # Your bot token
-  token = "MTIwMzA2OTcyMjEyNDQ4ODczNA.GkvXuT.JBJgGbxKPwpNjDSppzWjVDOXaIqyEiZwGJh5I0"
+  token = os.environ.get('TOKEN')
 
   # Your bot instance
   bot = CardassianDowekBot(intents=intents)
