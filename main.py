@@ -29,7 +29,7 @@ class CardassianDowekBot(discord.Client):
         if self.user == message.author:
             return
 
-        if message.content.lower().startswith(f"{self.prefix}value"):
+        if message.content.lower().startswith(f"{self.prefix}stats"):
             await self.show_current_value(message.channel)
 
     async def update_coin_value(self):
