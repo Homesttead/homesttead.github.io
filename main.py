@@ -17,7 +17,7 @@ class CardassianDowekBot(discord.Client):
         super().__init__(intents=intents)
         self.prefix = "!"
         self.update_interval = 60  # Update every 1 hour (adjust as needed)
-        self.up_chance = 65  # Percentage chance for Dowek value to inflate
+        self.up_chance = 55  # Percentage chance for Dowek value to inflate
         self.down_chance = 100 - self.up_chance  # Percentage chance for Dowek value to deflate
 
     async def on_ready(self):
